@@ -1,0 +1,67 @@
+*
+    position: relative
+    // border: solid 1px
+    font-family: 微軟正黑體
+    // padding: 0px
+    // margin: 0px
+    
+$light_gray: #DCDCDC
+
+@mixin size($w,$h)
+    width: $w
+    height: $h
+
+body,html
+    +size(100%,100%)
+    background-color: $light_gray
+    overflow: hidden
+
+.cross
+    +size(200px,200px)
+    transition-duration: 0.5s
+    background-color: orange
+
+.line1,.line2
+    +size(150px,10px)
+    position: absolute
+    top: 50%
+    left: 50%
+    background-color: white
+    transform: translateX(-50%) translateY(-50%)
+    transition-duration: 0.5s
+
+.line1
+    transform: translateX(-50%) translateY(-200%)
+
+.line2
+    transform: translateX(-50%) translateY(200%)
+
+.cross
+    &:hover
+        background-color: pink
+        .line1
+            transform: translateX(-50%) translateY(-50%) rotate(45deg) scaleX(1.2)
+        .line2
+            transform: translateX(-50%) translateY(-50%) rotate(-45deg) scale(1.2)
+
+.textbox
+    border: solid 1px
+    +size(200px,200px)
+    padding: 20px
+    & h1,p
+        top: 20px
+        opacity: 0
+        transition-duration: 0.5s
+    & h1 
+        font-size: 20px
+        transition-delay: 0s
+    & p 
+        font-size: 14px
+        transition-delay: 0.3s
+
+.textbox
+    &:hover
+        h1,p
+            top: 0px
+            opacity: 1
+            
